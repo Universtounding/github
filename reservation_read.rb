@@ -1,4 +1,4 @@
-list = File.read("collections/reservation.txt")
+list = File.read("reservation.txt")
 x = list.split
 
 x.each do |list|
