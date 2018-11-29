@@ -13,8 +13,8 @@ def initialize
 
   def emailer
     puts "What is your email?"
-    email = gets.chomp
-    @email = email
+      email = gets.chomp
+        @email = email
   end
 
 def  calender
@@ -54,6 +54,7 @@ new_hash = {
   name: new.name, day: new.day, what_time: new.what_time, size: new.size, email: new.email
 }
 
-reservations = File.new("collections/reservation.txt", 'a+')
+
+reservations = File.new("reservation.txt", 'a+')
 reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}")
 reservations.close
