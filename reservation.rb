@@ -17,7 +17,6 @@ def initialize
     @email = email
   end
 
-
 def  calender
   puts "what date is the reservation for?"
     day = gets.chomp
@@ -58,5 +57,3 @@ new_hash = {
 reservations = File.new("collections/reservation.txt", 'a+')
 reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}")
 reservations.close
-
-p new_hash
