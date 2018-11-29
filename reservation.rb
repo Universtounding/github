@@ -17,7 +17,6 @@ def initialize
     @email = email
   end
 
-did the change work?
 
 def  calender
   puts "what date is the reservation for?"
