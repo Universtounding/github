@@ -1,5 +1,7 @@
+require 'time'
+
   class NewUser
-  attr_accessor :name, :day, :what_time, :size, :email
+  attr_accessor :name, :day, :what_time, :size, :email, :time_stamp
 
 def initialize
   puts "who is making the reservation?"
@@ -9,6 +11,9 @@ def initialize
       @what_time = what_time
       @size = size
       @email = email
+      time_stamp = Time.now
+      time_stamp.httpdate
+      @time_stamp = time_stamp
   end
 
   def emailer
@@ -56,5 +61,5 @@ new_hash = {
 
 
 reservations = File.new("reservation.txt", 'a+')
-reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}", "Time_rec: #{Time.now}")
+reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}", "Time_rec: #{new.time_stamp}")
 reservations.close
