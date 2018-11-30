@@ -1,5 +1,6 @@
 Name: Kenny
-Date: 1124
-Time: 4
-People: 5
-Email: kendmorse@gmail.com
+Date: 11/24
+Time: 9pm
+People: 6
+Email: kendmorse@gmail.con
+Time_rec: 2018-11-29 20:39:56 -0500

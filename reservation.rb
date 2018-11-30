@@ -1,4 +1,4 @@
-class NewUser
+  class NewUser
   attr_accessor :name, :day, :what_time, :size, :email
 
 def initialize
@@ -56,5 +56,5 @@ new_hash = {
 
 
 reservations = File.new("reservation.txt", 'a+')
-reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}")
+reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}", "Time_rec: #{Time.now}")
 reservations.close
