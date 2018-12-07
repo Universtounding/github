@@ -1,9 +1,7 @@
-class NewUser
+class Reserve
   attr_accessor :name, :day, :what_time, :size, :email
 
 def initialize
-  puts "who is making the reservation?"
-    name = gets.chomp.capitalize
       @name = name
       @day = day
       @what_time = what_time
@@ -11,31 +9,10 @@ def initialize
       @email = email
   end
 
-VALID = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-
-def emailer
-  puts "What is your email?"
-    email = gets.chomp
-      @email = email
-end
-
-def is_valid_email? email
-  if @email =~ VALID
-    puts "That's a nice email!"
-  else
-    puts "#{email_redo}"
-     end
-   end
-
-def email_redo
-  puts "Please enter valid email!"
-  email = gets.chomp
-    @email = email
-    if @email =~ VALID
-      puts "That's a nice email!"
-    else
-      puts "#{email_redo}"
-       end
+def person
+  puts "who is making the reservation?"
+    name = gets.chomp.capitalize
+     @name = name
 end
 
 def  calender
@@ -62,20 +39,53 @@ def party
   end
 end
 
-new = NewUser.new
-new.emailer
-new.is_valid_email?(@email)
-new.calender
-new.time_slot
-new.party
-puts "We will email you with any updates at #{new.email}"
+class Inherit < Reserve
+
+VALID = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+def emailer
+  puts "What is your email?"
+    email = gets.chomp
+      @email = email
+end
+
+def is_valid_email? email
+  if @email =~ VALID
+    puts "That's a nice email!"
+  else
+    puts "#{email_redo}"
+     end
+   end
+
+def email_redo
+  puts "Please enter valid email!"
+  email = gets.chomp
+    @email = email
+    if @email =~ VALID
+      puts "That's a nice email!"
+    else
+      puts "#{email_redo}"
+       end
+    end
+  end
+
+valid = Inherit.new
+res = Reserve.new
+
+res.person
+valid.emailer
+valid.is_valid_email?(@email)
+res.calender
+res.time_slot
+res.party
+puts "We will email you with any updates at #{valid.email}"
 
 
-new_hash = {
-  name: new.name, day: new.day, what_time: new.what_time, size: new.size, email: new.email
+res_hash = {
+  name: res.name, day: res.day, what_time: res.what_time, size: res.size, email: valid.email
 }
 
 
 reservations = File.new("reservation.txt", 'a+')
-reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}", "Time_rec: #{Time.now}")
+reservations.puts("Name: #{res.name}", "Date: #{res.day}", "Time: #{res.what_time}", "People: #{res.size}", "Email: #{valid.email}", "Time_rec: #{Time.now}")
 reservations.close
