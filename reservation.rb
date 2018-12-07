@@ -1,7 +1,5 @@
-require 'time'
-
-  class NewUser
-  attr_accessor :name, :day, :what_time, :size, :email, :time_stamp
+class NewUser
+  attr_accessor :name, :day, :what_time, :size, :email
 
 def initialize
   puts "who is making the reservation?"
@@ -11,16 +9,34 @@ def initialize
       @what_time = what_time
       @size = size
       @email = email
-      time_stamp = Time.now
-      time_stamp.httpdate
-      @time_stamp = time_stamp
   end
 
-  def emailer
-    puts "What is your email?"
-      email = gets.chomp
-        @email = email
-  end
+VALID = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+
+def emailer
+  puts "What is your email?"
+    email = gets.chomp
+      @email = email
+end
+
+def is_valid_email? email
+  if @email =~ VALID
+    puts "That's a nice email!"
+  else
+    puts "#{email_redo}"
+     end
+   end
+
+def email_redo
+  puts "Please enter valid email!"
+  email = gets.chomp
+    @email = email
+    if @email =~ VALID
+      puts "That's a nice email!"
+    else
+      puts "#{email_redo}"
+       end
+end
 
 def  calender
   puts "what date is the reservation for?"
@@ -46,9 +62,9 @@ def party
   end
 end
 
-
 new = NewUser.new
 new.emailer
+new.is_valid_email?(@email)
 new.calender
 new.time_slot
 new.party
@@ -61,5 +77,5 @@ new_hash = {
 
 
 reservations = File.new("reservation.txt", 'a+')
-reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}", "Time_rec: #{new.time_stamp}")
+reservations.puts("Name: #{new.name}", "Date: #{new.day}", "Time: #{new.what_time}", "People: #{new.size}", "Email: #{new.email}", "Time_rec: #{Time.now}")
 reservations.close
