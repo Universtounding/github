@@ -23,8 +23,8 @@ end
 
 def time_slot
   puts "what time would you like to make the reservation?"
-    what_time = gets.chomp
-      @what_time = what_time
+  what_time = gets.chomp
+  @what_time = what_time
 end
 
 def party
