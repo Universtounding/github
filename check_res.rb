@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
-require_relative 'reservation.txt'
+reservations = File.read("reservation.txt")
+
+organize = reservations.split
+
+organize.each do |data|
+  p data
+end

@@ -39,10 +39,6 @@ class Reserve
       puts "Just to confirm your reservation is for #{@name}, on #{@day}, at #{@what_time}, with #{@size}?"
     end
   end
-
-  def final
-    res_hash = { name: @name, day: @day, what_time: @what_time, size: @size, email: @email }
-  end
 end
 
 class Inherit < Reserve
@@ -57,7 +53,7 @@ end
 
 def is_valid_email? email
   if @email =~ VALID
-    puts "That's a nice email!"
+    puts "Valid e-mail"
   else
     puts "#{email_redo}"
   end
@@ -68,24 +64,9 @@ def email_redo
   email = gets.chomp
   @email = email
     if @email =~ VALID
-      puts "That's a nice email!"
+      puts "Valid e-mail"
     else
       puts "#{email_redo}"
     end
-  end
-end
-
-class NewRes < Inherit
-
-  def input
-    valid = Inherit.new
-    res = Reserve.new
-    res.person
-    valid.emailer
-    valid.is_valid_email?(@email)
-    res.calender
-    res.time_slot
-    res.party
-    puts "We will email you with any updates at #{valid.email}"
   end
 end
